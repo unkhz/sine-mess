@@ -1,0 +1,30 @@
+html {
+  font-size:8vw;
+}
+
+body {
+  margin:0;
+  padding:0;
+  white-space:nowrap;
+  background:black;
+  font-family: "Times";
+  color: #fff;
+}
+
+ul {
+  padding:0;
+  margin:-0.5em 0 0 3em;
+  position:absolute;
+  width:100%;
+  top:50%;
+  left:0;
+  list-style-type: none;
+  li {
+    margin:0;
+    width:1em;
+    height:1em;
+    display:inline-block;
+  }
+}
+
+@import 'asdf';

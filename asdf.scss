@@ -1,0 +1,96 @@
+$asdf: 4;
+
+ul {
+  animation: scrolling #{$asdf}s linear 0s 4 normal;
+  transform: translateX(100%);
+  li {
+    animation: rotating-as #{$asdf/2}s linear 0s infinite normal;
+  }
+}
+
+@for $as from 1 through 17 {
+  ul:nth-child(#{$as}) {
+    animation-delay: #{($as - 1)*$asdf}s;
+    li {
+      transform-origin: #{0 + $as * 0.025}em 0.2em #{1 + $as * 0.0025}em;
+      span {
+        transform-origin: 1em #{0 + $as * 0.025}em #{1 + $as * 0.0025}em;
+      }
+      @for $df from 1 through 5 {
+        &:nth-child(#{$df}) {
+          @if $as < 7 {
+            animation-delay: #{(($as - 1)*($asdf*1000)) + ($asdf*250) + (($df - 1)*$asdf*50)}ms;
+            animation-iteration-count: #{(4 + 1 - $df)*4};
+          } @else {
+            animation-delay: #{(6*($asdf*1000)) + ($asdf*250) + (($df - 1)*$asdf*50)}ms;
+            animation-iteration-count: 1;
+          }
+          span {
+            @if $as == 1 {
+              animation-delay: #{(($as)*($asdf*1000)) + ($asdf*250) + (($df - 1)*$asdf*50)}ms;
+            } @else if $as > 6  {
+              animation-delay: #{ 6 * ($asdf*1000)) + ($asdf*250) + (($df - 1)*$asdf*50)}ms;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes rotating-as {
+  from  {transform: rotateX(000deg); }
+  to    {transform: rotateX(360deg); }
+}
+@-webkit-keyframes rotating-as-d {
+  from  {transform: rotateX(000deg) rotateX(000deg) translateZ(+0em); }
+  to    {transform: rotateX(360deg) rotateX(360deg) translateZ(-0.5em); }
+}
+@-webkit-keyframes rotating-as-f {
+  from  {transform: rotateX(000deg) rotateZ(000deg) translateY(+0.5em) translateX(-0.13em); }
+  to    {transform: rotateX(360deg) rotateZ(360deg) translateY(-0.5em) translateX(+0.15em); }
+}
+@-webkit-keyframes rotating-df {
+  from  {transform: rotateX(000deg) rotateZ(000deg) translateX(+1.5em); }
+  to    {transform: rotateX(360deg) rotateZ(360deg) translateX(-1.5em); }
+}
+@-webkit-keyframes rotating-df-d {
+  from  {transform: rotateY(000deg) rotateX(000deg) rotateZ(000deg) translateX(-0.23em); }
+  to    {transform: rotateY(360deg) rotateX(360deg) rotateZ(360deg) translateX(+0.25em); }
+}
+@-webkit-keyframes rotating-df-d {
+  from  {transform: rotateX(000deg) translateX(-0.23em); }
+  to    {transform: rotateX(360deg) translateX(+0.25em); }
+}
+
+@-webkit-keyframes scrolling {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.a            { opacity:1.00; }
+.s            { opacity:0.67; }
+.d            { opacity:0.33; }
+.f            { opacity:0.10; }
+.a.df         { animation-iteration-count:4;}
+.s.df         { animation-iteration-count:3;}
+.d.df         { animation-iteration-count:2;}
+.f.df         { animation-iteration-count:1;}
+.a span       { animation: rotating-as-d 1s linear 100ms infinite alternate; }
+.s span       { animation: rotating-as-d 1s linear 100ms infinite alternate; }
+.d span       { animation: rotating-as-f 1s linear 100ms infinite alternate; }
+.f span       { animation: rotating-as-f 1s linear 100ms infinite alternate; }
+
+.a.as.asdf li { animation-name: rotating-as; }
+.s.as.asdf li { animation-name: rotating-as; }
+.d.as.asdf li { animation-direction: alternate; animation-name: rotating-as-d; }
+.f.as.asdf li { animation-direction: alternate; animation-name: rotating-as-f; }
+
+.a.df.asdf li { animation-direction: alternate; animation-name: rotating-df; }
+.s.df.asdf li { animation-direction: alternate; animation-name: rotating-df; }
+.d.df.asdf li { animation-direction: alternate; animation-name: rotating-df-d; }
+.f.df.asdf li { animation-direction: alternate; animation-name: rotating-df-f; }
