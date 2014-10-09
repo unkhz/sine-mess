@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var _ = require('lodash');
 
 function logErrorAndNotify(e) {
   gutil.log('Error running task', e.plugin);
