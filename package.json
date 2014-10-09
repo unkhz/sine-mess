@@ -1,0 +1,16 @@
+{
+  "name": "sine-mess",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unkhz/sine-mess"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp-autoprefixer": "0.0.9",
+    "gulp-sass": "^0.7.3",
+    "gulp-util": "^3.0.0",
+    "gulp": "^3.8.7",
+    "rimraf": "^2.2.8"
+  }
+}
